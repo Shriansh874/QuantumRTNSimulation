@@ -1,0 +1,63 @@
+# Explanation of Quantum RTN Simulation
+
+## Introduction
+This document provides a comprehensive explanation of the `QuantumRTNSimulation` class, detailing its functionality, methods, and usage.
+
+## Initialization
+The `QuantumRTNSimulation` class is initialized with the following parameters:
+
+- tau_high: Average duration spent in the high state.
+- tau_low: Average duration spent in the low state.
+- total_time: Total duration of the simulation.
+- dt: Time step for each iteration of the simulation.
+- noise_level_gaussian: Standard deviation of the added Gaussian noise.
+- noise_level_flicker: Magnitude of the 1/f (flicker) noise.
+- hamiltonian: Hamiltonian matrix used for quantum time evolution.
+- states: Number of states in the RTN signal (default is 2).
+
+## Methods
+generate_rtn_signal()
+This method generates the Random Telegraph Noise (RTN) signal by alternating between high and low states based on exponential distributions of `tau_high` and `tau_low`.
+
+### add_noise()
+Adds noise to the generated RTN signal:
+- Gaussian Noise: Added using a normal distribution with standard deviation `noise_level_gaussian`.
+- 1/f Noise: Added using a cumulative sum of normally distributed random values scaled by `noise_level_flicker`.
+
+### quantum_time_evolution()
+Simulates the quantum time evolution of the system using the provided Hamiltonian matrix. The method computes the time evolution operator and applies it to the state vector over time.
+
+### plot_signals()
+Plots the noisy RTN signal and the quantum state probability over time, providing a visual representation of the simulation results.
+
+### plot_psd()
+Plots the Power Spectral Density (PSD) of the noisy RTN signal, showing the signal's power distribution across different frequencies.
+
+### plot_fft()
+Plots the Fourier Transform (FFT) of the noisy RTN signal, illustrating the signal's frequency components.
+
+### plot_autocorrelation()
+Plots the autocorrelation of the noisy RTN signal, which indicates how the signal correlates with itself over different time lags.
+
+### plot_partial_autocorrelation()
+Plots the partial autocorrelation of the noisy RTN signal, showing the direct correlation between the signal and its lagged values.
+
+### plot_histogram()
+Plots a histogram of the noisy RTN signal, providing a visual representation of the signal's value distribution. A normal distribution fit is also included.
+
+### locate_charge_traps()
+Identifies charge traps in the RTN signal by detecting transitions between states. The method can also cluster these charge traps for further analysis.
+
+### plot_traps()
+Plots the identified charge traps on the noisy RTN signal, highlighting the locations and clusters of these traps.
+
+### statistical_analysis()
+Performs a statistical analysis on the noisy RTN signal, calculating:
+- Mean: Average value of the signal.
+- Variance: Measure of signal variability.
+- Skewness: Measure of signal asymmetry.
+- Kurtosis: Measure of signal peakiness.
+- Kolmogorov-Smirnov Test: Compares the signal distribution to a normal distribution, providing D and p-values.
+
+## Usage
+Refer to the `examples` directory for detailed usage examples that demonstrate how to utilize the `QuantumRTNSimulation` class for various simulations and analyses.
