@@ -1,0 +1,15 @@
+from quantum_rtn_simulation import QuantumRTNSimulation
+
+tau_high = 10
+tau_low = 5
+total_time = 1000
+dt = 0.1
+noise_level_gaussian = 0.5
+noise_level_flicker = 0.1
+hamiltonian = np.array([[0, -1j], [1j, 0]])
+
+quantum_rtn_sim = QuantumRTNSimulation(tau_high, tau_low, total_time, dt, noise_level_gaussian, noise_level_flicker, hamiltonian)
+quantum_rtn_sim.generate_rtn_signal()
+quantum_rtn_sim.add_noise()
+quantum_rtn_sim.quantum_time_evolution()
+quantum_rtn_sim.plot_signals()
